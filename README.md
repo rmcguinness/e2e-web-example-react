@@ -30,7 +30,7 @@ git clone git@github.com:rmcguinness/e2e-web-example-react.git
 git clone https://github.com/rmcguinness/e2e-web-example-react.git
 
 # Once Downloaded, go the e2e-web-example-react directory
-cd e2e-web-example-react
+cd e2e-web-example-react/go
 ```
 
 ### Start the web service
@@ -67,7 +67,7 @@ Open a second terminal tab using Cmd+T
 
 ```shell
 # Change to the project directory
-cd ~/Projects/e2e-web-example-react/web
+cd ~/Projects/e2e-web-example-react/react
 
 # Install the dependencies
 npm install
