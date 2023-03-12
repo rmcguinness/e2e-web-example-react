@@ -4,9 +4,11 @@ import * as state from "../State";
 import {IconButton, InputBase, Paper} from "@mui/material";
 
 import SearchIcon from '@mui/icons-material/Search';
+import {tabState} from "../State";
 
 export function SearchForm() {
     const [searchState, setSearchState] = useRecoilState(state.searchState);
+    const [tabValue, setTabValue] = useRecoilState(tabState);
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -17,6 +19,9 @@ export function SearchForm() {
                 (result) => {
                     setSearchState((s) => {
                         return {error: null, query: s.query, isReady: true, results: JSON.parse(result)};
+                    })
+                    setTabValue(t => {
+                        return 0;
                     })
                 },
                 (error) => {
@@ -33,6 +38,11 @@ export function SearchForm() {
         })
     }
 
+    const onKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            onSubmit(event);
+        }
+    }
 
     return (
         <Paper component="form">
@@ -40,6 +50,7 @@ export function SearchForm() {
                 sx={{ml: 1, flex: 1}}
                 placeholder="Search"
                 onChange={onChange}
+                onKeyDown={onKeyPress}
                 inputProps={{'aria-label': 'search'}}
             />
             <IconButton type="button" sx={{p: '10px'}} aria-label="search" onClick={onSubmit}>

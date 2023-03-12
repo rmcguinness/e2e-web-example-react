@@ -1,5 +1,7 @@
 import {atom} from "recoil";
 
+export const tabState = atom({key: "tabState", default: 0});
+
 export const searchState = atom({
     key: "searchResults",
     default: {

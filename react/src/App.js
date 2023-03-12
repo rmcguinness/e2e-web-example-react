@@ -8,13 +8,14 @@ import {SearchResults} from "./search/SearchResults";
 
 import React from 'react';
 
-import {RecoilRoot} from 'recoil';
+import {useRecoilState} from 'recoil';
 
 import {DataForm} from "./data/DataForm";
 import {AppBar, IconButton, Tab, Tabs, Toolbar} from "@mui/material";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
+import { tabState } from './State';
 
 function a11yProps(index) {
     return {
@@ -44,14 +45,14 @@ function TabPanel(props) {
 }
 
 function App() {
-    const [value, setValue] = React.useState(0);
+    const [tabValue, setTabValue] = useRecoilState(tabState);
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        setTabValue(newValue);
     };
 
     return (
-        <RecoilRoot>
+
             <div className="App">
                 <Box sx={{width: '100%'}}>
                     <AppBar position="static">
@@ -73,20 +74,19 @@ function App() {
                     </AppBar>
 
                     <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                        <Tabs value={tabValue} onChange={handleChange} aria-label="basic tabs example">
                             <Tab label="Search" {...a11yProps(0)} />
                             <Tab label="Form" {...a11yProps(1)} />
                         </Tabs>
-                        <TabPanel value={value} index={0}>
+                        <TabPanel value={tabValue} index={0}>
                             <SearchResults/>
                         </TabPanel>
-                        <TabPanel value={value} index={1}>
+                        <TabPanel value={tabValue} index={1}>
                             <DataForm/>
                         </TabPanel>
                     </Box>
                 </Box>
             </div>
-        </RecoilRoot>
     );
 }
 
