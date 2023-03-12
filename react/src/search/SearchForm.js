@@ -3,8 +3,7 @@ import {
 } from 'recoil';
 
 import * as state from "../State";
-import {Button, FormControl, IconButton, InputAdornment, InputBase, Paper, TextField} from "@mui/material";
-import Box from "@mui/material/Box";
+import {IconButton, InputBase, Paper} from "@mui/material";
 
 import SearchIcon from '@mui/icons-material/Search';
 

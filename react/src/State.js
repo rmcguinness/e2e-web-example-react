@@ -14,8 +14,8 @@ export const dataFormState = atom({
     key: 'dataForm',
     default: {
         id: '',
-        title: null,
-        body: null,
-        link: null
+        title: '',
+        body: '',
+        link: ''
     }
 })

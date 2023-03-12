@@ -3,9 +3,10 @@ package service
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 type SearchRequest struct {
@@ -31,7 +32,6 @@ func GetResults(c *gin.Context) {
 		}
 	}
 	resp, _ := json.Marshal(out)
-	//c.Set("Content-Type", "application/json")
 	c.IndentedJSON(http.StatusOK, string(resp))
 }
 
@@ -41,7 +41,15 @@ func AddResult(c *gin.Context) {
 		fmt.Printf("Error: %v\n", err)
 		return
 	}
-	fmt.Printf("%v", newResult)
+
+	if len(newResult.Id) == 0 {
+		newResult.Id = GetId()
+	}
+
 	database = append(database, newResult)
+
+	resp, _ := json.Marshal(newResult)
+	c.IndentedJSON(http.StatusOK, string(resp))
+	// c.Set("Content-Type", "application/json")
 	return
 }
