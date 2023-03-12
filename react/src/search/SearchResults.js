@@ -11,9 +11,9 @@ export function SearchResults() {
         return (
             <Card key={item.id} sx={{ margin: 2}}>
                 <CardContent>
-                    <Typography sx={{ fontSize: 16 }}>{item.title}</Typography>
-                    <Typography sx={{ fontSize: 8 }}>{item.link}</Typography>
-                    <Typography sx={{ fontSize: 10 }}>{item.body}</Typography>
+                    <Typography component="div" sx={{ fontSize: 16 }}>{item.title}</Typography>
+                    <Typography component="div" sx={{ fontSize: 8 }}>{item.link}</Typography>
+                    <Typography component="div" sx={{ fontSize: 10 }}>{item.body}</Typography>
                 </CardContent>
                 <CardActions>
                     <Button size="small" onClick={() => {
@@ -31,8 +31,10 @@ export function SearchResults() {
     } else {
         return (
             <Box sx={{ width: '100%'}}>
+                <div>
                 <h5>Results</h5>
-                <div>{out}</div>
+                {out}
+                </div>
             </Box>
         );
     }

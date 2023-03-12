@@ -40,7 +40,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                    <Typography component={'div'} >{children}</Typography>
                 </Box>
             )}
         </div>
@@ -55,9 +55,8 @@ function App() {
     };
 
     return (
+    <RecoilRoot>
       <div className="App">
-      <RecoilRoot>
-          <div>
               <Box sx={{ width: '100%' }}>
                   <AppBar position="static">
                       <Toolbar>
@@ -70,7 +69,7 @@ function App() {
                           >
                               <MenuIcon />
                           </IconButton>
-                          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                          <Typography variant="h6" component="span" sx={{ flexGrow: 1 }}>
                               Example Application
                           </Typography>
                           <SearchForm />
@@ -82,17 +81,16 @@ function App() {
                           <Tab label="Search" {...a11yProps(0)} />
                           <Tab label="Form" {...a11yProps(1)} />
                       </Tabs>
+                      <TabPanel value={value} index={0}>
+                          <SearchResults />
+                      </TabPanel>
+                      <TabPanel value={value} index={1}>
+                          <DataForm/>
+                      </TabPanel>
                   </Box>
-                  <TabPanel value={value} index={0}>
-                      <SearchResults />
-                  </TabPanel>
-                  <TabPanel value={value} index={1}>
-                      <DataForm/>
-                  </TabPanel>
               </Box>
-          </div>
-      </RecoilRoot>
       </div>
+    </RecoilRoot>
   );
 }
 

@@ -5,7 +5,7 @@ import {
 import React from 'react';
 
 import {dataFormState} from "../State";
-import {Button, TextField, Box, Snackbar} from "@mui/material";
+import {Button, TextField, Box, Snackbar, Stack} from "@mui/material";
 import Grid from '@mui/material/Grid'; 
 // Icons
 import SaveIcon from '@mui/icons-material/Save';
@@ -93,7 +93,7 @@ export function DataForm() {
             }}
             noValidate
             autoComplete="off">
-            
+            <div>
             <Grid container spacing={1}>
                 <Grid item xs={12}>
                     <TextField fullWidth onChange={changeTitle} label="Title" id="title" variant="standard" value={dataForm.title} />
@@ -106,8 +106,10 @@ export function DataForm() {
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container justifyContent="flex-end" spacing={0}>
-                        <Button variant="outlined" onClick={onReset} startIcon={<RotateLeftIcon />}>Reset</Button>
-                        <Button variant="outlined" onClick={onSubmit} startIcon={<SaveIcon />}>Submit</Button>
+                        <Stack spacing={2} direction="row">
+                            <Button variant="outlined" onClick={onReset} startIcon={<RotateLeftIcon />}>Reset</Button>
+                            <Button variant="outlined" onClick={onSubmit} startIcon={<SaveIcon />}>Submit</Button>
+                        </Stack>
                     </Grid>
                 </Grid>
             </Grid>
@@ -118,6 +120,7 @@ export function DataForm() {
                 message="Saved"
                 action={action}
                 />
+            </div>
         </Box>
     )
 }
