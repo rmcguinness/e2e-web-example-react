@@ -14,6 +14,7 @@ On your computer, make the following directories in your home folder:
 * Projects/e2e-web-example-react
 
 ### Using your Terminal to do so (on a Mac)
+
 ```shell
 mkdir -P ~/Projects/e2e-web-example-react
 ```

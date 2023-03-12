@@ -1,12 +1,10 @@
-import {
-    useRecoilState
-} from 'recoil';
+import {useRecoilState} from 'recoil';
 
 import React from 'react';
 
 import {dataFormState} from "../State";
-import {Button, TextField, Box, Snackbar, Stack} from "@mui/material";
-import Grid from '@mui/material/Grid'; 
+import {Box, Button, Snackbar, Stack, TextField} from "@mui/material";
+import Grid from '@mui/material/Grid';
 // Icons
 import SaveIcon from '@mui/icons-material/Save';
 import IconButton from '@mui/material/IconButton';
@@ -21,25 +19,25 @@ export function DataForm() {
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
-          }
-          setOpen(false);
+        }
+        setOpen(false);
     }
 
     const action = (
         <React.Fragment>
-          <Button color="secondary" size="small" onClick={handleClose}>
-            UNDO
-          </Button>
-          <IconButton
-            size="small"
-            aria-label="close"
-            color="inherit"
-            onClick={handleClose}
-          >
-            <CloseIcon fontSize="small" />
-          </IconButton>
+            <Button color="secondary" size="small" onClick={handleClose}>
+                UNDO
+            </Button>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+            >
+                <CloseIcon fontSize="small"/>
+            </IconButton>
         </React.Fragment>
-      );
+    );
 
     const onReset = (event) => {
         setDataForm((form) => {
@@ -52,7 +50,7 @@ export function DataForm() {
 
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(dataForm)
         }
 
@@ -94,31 +92,35 @@ export function DataForm() {
             noValidate
             autoComplete="off">
             <div>
-            <Grid container spacing={1}>
-                <Grid item xs={12}>
-                    <TextField fullWidth onChange={changeTitle} label="Title" id="title" variant="standard" value={dataForm.title} />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField fullWidth onChange={changeLink} label="Link" id="link" variant="standard" value={dataForm.link} />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField fullWidth onChange={changeBody} label="Body" id="body" variant="standard" value={dataForm.body} multiline={true} minRows="2" />
-                </Grid>
-                <Grid item xs={12}>
-                    <Grid container justifyContent="flex-end" spacing={0}>
-                        <Stack spacing={2} direction="row">
-                            <Button variant="outlined" onClick={onReset} startIcon={<RotateLeftIcon />}>Reset</Button>
-                            <Button variant="outlined" onClick={onSubmit} startIcon={<SaveIcon />}>Submit</Button>
-                        </Stack>
+                <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                        <TextField fullWidth onChange={changeTitle} label="Title" id="title" variant="standard"
+                                   value={dataForm.title}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField fullWidth onChange={changeLink} label="Link" id="link" variant="standard"
+                                   value={dataForm.link}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField fullWidth onChange={changeBody} label="Body" id="body" variant="standard"
+                                   value={dataForm.body} multiline={true} minRows="2"/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Grid container justifyContent="flex-end" spacing={0}>
+                            <Stack spacing={2} direction="row">
+                                <Button variant="outlined" onClick={onReset}
+                                        startIcon={<RotateLeftIcon/>}>Reset</Button>
+                                <Button variant="outlined" onClick={onSubmit} startIcon={<SaveIcon/>}>Submit</Button>
+                            </Stack>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-            <Snackbar
-                open={open}
-                autoHideDuration={6000}
-                onClose={handleClose}
-                message="Saved"
-                action={action}
+                <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    message="Saved"
+                    action={action}
                 />
             </div>
         </Box>

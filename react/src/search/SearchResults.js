@@ -7,18 +7,18 @@ import Typography from "@mui/material/Typography";
 export function SearchResults() {
     const [searchState] = useRecoilState(state.searchState);
 
-    let out = searchState.results.map(function(item) {
+    let out = searchState.results.map(function (item) {
         return (
-            <Card key={item.id} sx={{ margin: 2}}>
+            <Card key={item.id} sx={{margin: 2}}>
                 <CardContent>
-                    <Typography component="div" sx={{ fontSize: 16 }}>{item.title}</Typography>
-                    <Typography component="div" sx={{ fontSize: 8 }}>{item.link}</Typography>
-                    <Typography component="div" sx={{ fontSize: 10 }}>{item.body}</Typography>
+                    <Typography component="div" sx={{fontSize: 16}}>{item.title}</Typography>
+                    <Typography component="div" sx={{fontSize: 8}}>{item.link}</Typography>
+                    <Typography component="div" sx={{fontSize: 10}}>{item.body}</Typography>
                 </CardContent>
                 <CardActions>
                     <Button size="small" onClick={() => {
                         window.open(item.link, '_blank')
-                    }} >Learn More</Button>
+                    }}>Learn More</Button>
                 </CardActions>
             </Card>
         )
@@ -30,10 +30,10 @@ export function SearchResults() {
         return <span></span>;
     } else {
         return (
-            <Box sx={{ width: '100%'}}>
+            <Box sx={{width: '100%'}}>
                 <div>
-                <h5>Results</h5>
-                {out}
+                    <h5>Results</h5>
+                    {out}
                 </div>
             </Box>
         );
